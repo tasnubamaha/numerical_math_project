@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/signin.css">
+    <title>signin</title>
+</head>
+
+<body>
+
+    <div class="flex">
+        <img src="/static/images/signin.png" alt="">
+        <div class="signin-container">
+            <h2>signin</h2>
+            <form action="#" method="post" id="signin-form">
+                {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">signin</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

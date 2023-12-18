@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/static/css/index.css">
+  <title>Math Solving Platform</title>
+</head>
+
+<body>
+  <!-- {% for message in messages %}
+  <div class = "alert alert = {{message.tags}} alert-dismissible fad show" role = "alert">
+    <strong>Message</strong>{{message}}
+    <button type="button", class="close" data-dismiss="alerta" aria-label="close">
+    <span aria-hidden="true">&times;</span>
+  </div>
+  {%endfor%} -->
+  <div class="navbar">
+    <nav class="nav" style="margin-left: 40px;">
+      <a class="nav-link active" aria-current="page" href="#">Home</a>
+      <a class="nav-link" href="career.html">Career</a>
+      <a class="nav-link" href="blog.html">Blogs</a>
+    </nav>
+    <div class="dropdown">
+      <img class="dropbtn" src="/static/images/cutiemodel.jpg" alt="Avatar" width="60" height="60">
+      <div class="dropdown-content">
+        <a href="auth/settings">Settings</a>
+        {% if user.is_authenticated %}
+        <a href="auth/signout">Sign Out</a>
+        {% else %}
+        <a href="auth/signin">Sign In</a>
+        <a href="auth/signup">Sign Up</a>
+        {% endif %}
+        
+      </div>
+      </div>
+      </div>
+      <section class="top">
+        {% if user.is_authenticated %}
+        <h1 style="text-align: center;font: italic">Hello {{ username }}</h1>
+        {%else%}
+        <h1>Hi,</h1>
+        {%endif%}
+        <h4 style="text-align: center">Welcome to the Numerical Math Solving Platform</h4>
+    <p>This platform is designed for students who are struggling with their maths and need help <br> <span>in solving
+        complex mathematical problems.</span></p>
+    </section>
+    <h5 style="font-size: 30px;margin-left: 70px;margin-top: 20px;">Math Solver</h5>
+    <section class="card mb-3" style="max-width: 640px; margin: 20%; margin-top: 20px;background-color: #9FBB73;">
+        <form method="post" action="{%url 'mathsolver:home'%}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-danger" style="width: 20%; margin-left: 200px;font-family: cursive;"">
+          Solve
+        </button>
+      </form>
+      {% if result %}
+      
+        {% if result.error %}
+          <div>{{result.error}}</div>
+          <li><strong>Input: </strong> {{ result.latex_input }}</li>
+
+        
+        {% else %}
+          <h2>Result</h2>
+          <ul>
+              <li><strong>Input:</strong> {{ result.latex_input }}</li>
+              {% if result.numerical_solution %}
+                  <li><strong>Numerical Solution:</strong> {{ result.numerical_solution }}</li>
+              {% endif %}
+              <!-- {% if result.solution_strategy %}
+                  <li>
+                      {{result.solution_strategy}}
+                  </li>
+              {% endif %} -->
+            </ul>
+        {% endif %}
+    {% endif %}
+    </section>
+    <section class="head">
+      <h5 style="font-size: 30px;">Popular Blogs</h5>
+      <div class="grid-container" style="margin-top: 20px;">
+        <div class="card mb-3" style="max-width: 540px;background-color: #EEE7DA;">
+          <div class="row g-0">
+            <div class="col-md-4">
+            <img src="/static/images/sector.jpg" style="width: 170px;" class="img-fluid rounded-start mt-3 ms-3" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title ms-3" style="font-family: cursive;">History of Math</h5>
+              <p class="card-text ms-3" style="font-family: cursive;">This is a wider card with supporting text below as
+                a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-body-secondary ms-3" style="font-family: cursive;">Last updated 3
+                  mins ago</small></p>
+              </div>
+              </div>
+              </div>
+              
+              </div>
+              <div class="card mb-3" style="max-width: 540px;background-color: #DED0B6;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+            <img src="/static/images/card.jpg" style="width: 170px;" class="img-fluid rounded-start mt-3 ms-3" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title ms-3" style="font-family: cursive;">Math is FUN!!!</h5>
+              <p class="card-text ms-3" style="font-family: cursive;">This is a wider card with supporting text below as
+                a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-body-secondary ms-3" style="font-family: cursive;">Last updated 30
+                  mins ago</small></p>
+              </div>
+              </div>
+              </div>
+              </div>
+              
+              </div>
+              </section>
+              <section style="margin-bottom: 20px;">
+                <h5 style="font-size: 30px;margin-left: 70px;margin-top: 50px;">Popular Tutorials</h5>
+                <div class="video">
+      <div class="card mb-3"
+        style="max-width: 340px;height: 260px;margin-left: 70px; margin-top: 20px; background-color: #EFE1D1;">
+        <iframe width="80%" height="200px" src="https://www.youtube.com/embed/BcOPKQAZcn0" frameborder="0"
+          allowfullscreen></iframe>
+        <p class="card-text"><small class="text-body-secondary" style="font-family: cursive;margin-left: 34px;">Must
+            watch video...</small></p>
+      </div>
+      <div class="card mb-3"
+        style="max-width: 340px;height: 260px;margin-left: 70px; margin-top: 20px; background-color: #EFE1D1;">
+        <iframe width="80%" height="200px" src="https://www.youtube.com/embed/gf0-OEvLHG4" frameborder="0"
+          allowfullscreen></iframe>
+        <p class="card-text"><small class="text-body-secondary" style="font-family: cursive;margin-left: 34px;">Must
+            watch video...</small></p>
+      </div>
+      <div class="card mb-3"
+        style="max-width: 340px;height: 260px;margin-left: 70px; margin-top: 20px; background-color: #EFE1D1;">
+        <iframe width="80%" height="200px" src="https://www.youtube.com/embed/fiVgwEgc-DY" frameborder="0"
+          allowfullscreen></iframe>
+        <p class="card-text"><small class="text-body-secondary" style="font-family: cursive;margin-left: 34px;">Must
+            watch video...</small></p>
+      </div>
+      </div>
+      </section>
+
+  <footer>
+    <div class="social-media">
+      <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>Contact us at careers@yourcompany.com</p>
+    </footer>
+
+   <!-- script -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    // solve the problem
+    function solveProblem() {
+     const problem = document.getElementById('problem').value;
+     const result = eval(problem);
+     document.getElementById('result').innerHTML = 'Result: ' + result;
+    }
+    
+    // dropdown for the profile avatar
+    document.addEventListener('DOMContentLoaded', function() {
+     const dropdowns = document.getElementsByClassName('dropdown');
+     const dropdownArray = Array.prototype.slice.call(dropdowns, 0);
+    
+     dropdownArray.forEach(function(dropdown) {
+        dropdown.addEventListener('mouseover', function() {
+          this.getElementsByClassName('dropdown-content')[0].style.display = 'block';
+        });
+        dropdown.addEventListener('mouseout', function() {
+          this.getElementsByClassName('dropdown-content')[0].style.display = 'none';
+        });
+     });
+    });
+    
+  </script>
+
+
+</body>
+
+</html>

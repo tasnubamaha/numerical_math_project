@@ -1,0 +1,64 @@
+body {
+    font-family: cursive;
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    background-color: #5F6F52;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.job-opening {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.apply-btn {
+    background-color: #5F6F52;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.last-job {
+    margin-bottom: 80px; 
+}
+
+.first{
+    background-color: #B4BDFF;
+}
+
+.mid{
+    background-color: #9FBB73;
+}
+
+.third{
+    background-color: #D0A2F7;
+}
+.apply-btn:hover {
+    background-color: #5F6F52;
+}
+
+footer {
+    background-color: #5F6F52;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 97%;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    position: absolute; 
+    left: 10px; 
+    top: 50px; 
+}

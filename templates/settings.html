@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/settings.css">
+    <title>Settings</title>
+</head>
+<body>
+    
+    <a href="../home" class="back-link">&larr; Back</a>
+    <div class="settings-container">
+        <div class="header">
+            <h1 style="text-align: center ;">User Settings</h1>
+        </div>
+
+        <div class="tabs" style="margin-left: 70px;">
+            <button onclick="openTab('general')">General</button>
+            <button onclick="openTab('security')">Security</button>
+            <button onclick="openTab('privacy')">Privacy</button>
+        </div>
+
+        <div id="general" class="tab-content"  style="margin-left: 70px;">
+            <h2>General Settings</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="" required>
+
+            <label for="language">Language:</label>
+            <select id="language" name="language">
+                <option value="english">English</option>
+                <option value="spanish">Spanish</option>
+                <option value="french">French</option>
+            </select>
+        </div>
+
+        <div id="security" class="tab-content" style="margin-left: 70px;">
+            <h2>Security Settings</h2>
+            <label for="password">New Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter new password">
+        
+            <label for="confirm-password">Confirm New Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm new password">
+        
+            <label for="two-factor-auth">Two-Factor Authentication:</label>
+            <input type="checkbox" id="two-factor-auth" name="two-factor-auth">
+        </div>
+
+        <div id="privacy" class="tab-content" style="margin-left: 70px;">
+            <h2>Privacy Settings</h2>
+            <label for="profile-visibility">Profile Visibility:</label>
+            <select id="profile-visibility" name="profile-visibility">
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+            </select>
+
+            <label for="notification-preferences">Notification Preferences:</label>
+            <input type="checkbox" id="notification-preferences" name="notification-preferences">
+                </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabContent;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
+
